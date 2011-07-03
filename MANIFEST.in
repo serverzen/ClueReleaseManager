@@ -1,1 +1,1 @@
-global-include *.html *.js htpasswd.py
+global-include *.html *.js htpasswd.py *.rst

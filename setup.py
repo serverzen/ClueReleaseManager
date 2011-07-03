@@ -2,8 +2,8 @@ from setuptools import setup
 
 base_version = '0.4'
 
-readme = open('README.txt').read().strip()
-history = open('HISTORY.txt').read().strip()
+readme = open('README.rst').read().strip()
+history = open('CHANGES.rst').read().strip()
 
 url = 'http://projects.serverzen.com/pm/p/cluemapper/wiki/ClueReleaseManager'
 
