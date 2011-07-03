@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+{% if use_dojo %}
+{{ dojo_block }}
+{% block post_dojo_js %}{% endblock %}
+<script type="text/javascript">
+    dojo.require('clue.secure.mgt');
+    dojo.require('dijit.Dialog');
+
+    var _can_manage_security = '{{ can_manage_security }}';
+    var can_manage_security = false;
+    if (_can_manage_security == 'True')
+        can_manage_security = true;
+
+    var smanager;
+    var dialog;
+
+    dojo.addOnLoad(function() {
+        if (can_manage_security) {
+            smanager = new clue.secure.mgt.SecurityManager('{{ url_root}}secure/');
+            dialog = new dijit.Dialog({title: 'Manage Users and Groups',
+                                       style: 'width: 40em'});
+        }
+    });
+
+    function _display_security_manager() {
+        dialog.show();
+        smanager.display(dialog.containerNode);
+    };
+
+    function display_security_manager() {
+        if (dialog && smanager) {
+            _display_security_manager();
+        } else {
+            dojo.addOnLoad(function() {
+                _display_security_manager();
+            });
+        }
+    };
+</script>
+{% endif %}
+    <link rel="stylesheet" type="text/css" charset="utf-8"
+          media="all" href="{{ url_root }}static/cluerelmgr.css" />
+    <title>{% block title %}ClueReleaseManager{% endblock %}</title>
+  </head>
+  <body>
+    <div class="top">
+      <div class="logo"><a href="{{ url_root }}">ClueReleaseManager (v{{ version}})</a></div>
+      <ul class="top-actions">
+        {% if remote_user is undefined %}
+          <li class="first"><a href="{{ url_root }}login">Login</a></li>
+        {% else %}
+          <li class="first">{{ remote_user }} (<a href="{{ url_root }}logout">Logout</a>)</li>
+          {% if can_manage_security %}
+            <li><a id="security-link" href="javascript:display_security_manager()">Security</a></li>
+          {% endif %}
+        {% endif %}
+        <li><a href="{{ url_root }}simple/">Simple Index</a></li>
+      </ul>
+    </div>
+    {% block content %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3. rg/1999/xhtml">
+  <head>
+{% if use_dojo %}
+{{ dojo_block }}
+{% block post_dojo_js %}{% endblock %}
+{% endif %}
+    <link rel="stylesheet" type="text/css" charset="utf-8"
+          media="all" href="{{ url_root }}static/cluerelmgr.css" />
+    <title>{% block title %}ClueReleaseManager{% endblock %}</title>
+  </head>
+  <body>
+    <div class="top">
+      <div class="logo"><a href="{{ url_root }}">ClueReleaseManager</a></div>
+      <ul class="top-actions">
+        {% if remote_user is undefined %}<li class="first"><a href="{{ url_root }}login">Login</a></li>
+        {% else %}<li class="first">{{ remote_user }} (<a href="{{ url_root }}logout">Logout</a>)</li>
+        {% endif %}
+        <li><a href="{{ url_root }}simple/">Simple Index</a></li>
+        <li>v{{ version }}</li>
+      </ul>
+    </div>
+		<h1>User Admin</h1>
+		<p> currently only writes to passwd file</p>
+		<form action="adduser">
+		username	<input name="username" />
+		<br />
+	  password		<input name="password" />
+		<br />
+		<input type="submit" value="save" />
+      </form>
+
+			<ul>
+				{% for item in user_list %}
+				    <li>{{ item }}</li>
+						{% endfor %}
+					</ul>
+
+		<p>{% block extra_message %}{% endblock %}</p>
+    {% block content %}{% endblock %}
+  </body>
+</html>

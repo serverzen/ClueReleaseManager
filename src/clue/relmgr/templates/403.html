@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}{{ super() }} :: {{ exc }}{% endblock %}
+{% block content %}
+<h1>{{ exc }}</h1>
+<p>{{ extra_message }}</p>
+{{ exc.description }}
+{% endblock %}

@@ -1,0 +1,305 @@
+BODY {
+    font-family: verdana, helvetica, arial;
+}
+
+TABLE.distro-listing {
+    width: 100%;
+}
+
+TABLE.distro-listing TH {
+    text-align: left;
+}
+
+TABLE.distro-listing TH,
+TABLE.distro-listing TD {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+TABLE.distro-listing TH.distro-name {
+    width: 20%;
+}
+
+TABLE.distro-listing TH.distro-updated {
+    width: 10em;
+}
+
+.top {
+    clear: both;
+    height: 2em;
+}
+
+.top .logo {
+    float: left;
+}
+
+.top-actions {
+    float: right;
+    margin: 0;
+    padding: 0;
+}
+
+.top-actions LI {
+    display: inline;
+    border-left: 1px solid black;
+    padding: 0;
+    padding-left: 0.3em;
+    margin: 0;
+    list-style-type: none;
+}
+
+.breadcrumbs {
+    font-size: 75%;
+}
+
+.distro-block {
+    float: right;
+    border: 2px dashed #ccc;
+    padding: 1em;
+    margin: 0.5em;
+    font-size: 75%;
+    width: 15em;
+    clear: right;
+    overflow: auto;
+}
+
+.distro-block UL {
+    margin: 0;
+    padding: 0;
+    padding-left: 1em;
+}
+
+.distro-block LI {
+    margin-left: 1em;
+}
+
+.distro-block H4 {
+    margin: 0 0 0.5em 0;
+}
+
+.distro-block .empty {
+    color: #ccc;
+}
+
+.distro-block DD {
+    word-wrap: break-word;
+}
+
+.distro-metadata H4.metadata {
+    display: none;
+}
+
+.distro-metadata DL {
+    margin: 0;
+    padding: 0;
+}
+
+.distro-metadata DT {
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+    padding-right: 0.5em;
+}
+
+.distro-metadata DD {
+    padding: 0;
+    margin: 0 0 0 1em;
+}
+
+.distro-summary {
+    font-style: italic;
+    font-size: 90%;
+}
+
+.rst H1 {
+    font-size: 150%;
+}
+
+.rst H2 {
+    font-size: 130%;
+}
+
+.rst H3, .rst H4, .rst H5 {
+    font-size: 110%;
+}
+
+.rst .system-message {
+    font-size: 75%;
+    background-color: #ffb;
+    padding: 0.25em;
+    overflow: auto;
+}
+
+.rst .system-message pre {
+    background-color: #ffb;
+    overflow: auto;
+}
+
+.rst .system-message .system-message-title {
+    color: red;
+    font-style: italic;
+}
+
+.rst .system-message p {
+    font-style: italic;
+}
+
+PRE {
+    margin-left: 3em;
+    border: 1px dashed black;
+    padding: 1em;
+    background-color: #fafafa;
+    overflow: auto;
+}
+
+.pager {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 20em;
+}
+
+.pager .page-link {
+    display: block;
+    float: left;
+    width: 1em;
+}
+
+.distro-searchform {
+    margin: 0.5em;
+    border: 1px dashed #444;
+    padding: 0.5em;
+    background-color: #eee;
+}
+
+.distro-searchform LABEL {
+    display: none;
+}
+
+.distro-searchform.box {
+    float: right;
+}
+
+.distro-searchform.box INPUT.action {
+    float: right;
+}
+
+.distro-searchform,
+.distro-searchform INPUT {
+    font-size: 125%;
+}
+
+.distro-searchform .field,
+.distro-searchform .action  {
+    float: left;
+}
+
+LI.first {
+    border: none;
+}
+
+.empty-list {
+    font-style: italic;
+}
+
+.inactive {
+    color: #777;
+    background-color: #eee;
+    font-style: italic;
+}
+
+a.modify-index {
+    padding-left: 0.5em;
+}
+
+a.new-index {
+    padding-left: 0.5em;
+    font-weight: normal;
+}
+
+#index-manager-container {
+    width: 20em;
+    height: 20em;
+}
+
+#index-manager-container .loading {
+    margin: auto;
+    text-align: center;
+}
+
+#current-index-entries .delete {
+    padding-left: 0.3em;
+}
+
+#current-index-entries,
+#new-index-entry {
+    border: 1px dashed #999;
+    padding: 0.4em;
+}
+
+#new-index-entry {
+    margin-top: 2em;
+}
+
+#current-index-entries .empty {
+    color: #999;
+    font-style: italic;
+    display: block;
+    text-align: center;
+}
+
+#current-index-entries .target {
+    background-color: #dcdcdc;
+    padding: 0.2em;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+}
+
+.index-editing-distro-list {
+    overflow: auto;
+    max-height: 6em;
+}
+
+#index-manager-status {
+    background-color: #dcdcdc;
+    padding: 0.3em;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    display: inline;
+    font-weight: normal;
+}
+
+#index-manager-status.hidden {
+    display: none;
+}
+
+dl.index-info {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 2em;
+}
+
+dl.index-info dt {
+    font-weight: bold;
+    display: inline;
+}
+
+dl.index-info dd {
+    display: inline;
+    margin: 0;
+}
+
+dl.index-info dd input {
+    display: inline;
+}
+
+.user-mgt {
+    font-size: 0.9em;
+}
+
+.index-actions {
+    font-style: italic;
+    font-size: 0.9em;
+    display: inline;
+    padding-left: 1em;
+}

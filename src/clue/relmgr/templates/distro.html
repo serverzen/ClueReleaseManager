@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block post_dojo_js %}
+<script type="text/javascript">
+    dojo.require('clue.secure.mgt');
+    dojo.require('clue.relmgr.distro');
+    dojo.addOnLoad(function() {
+        var distro = new clue.relmgr.distro.Distro('{{ distro_url }}');
+        distro.activate();
+    });
+</script>
+{% endblock %}
+{% block title %}{{ super() }} :: {{ distro.name }}{% endblock %}
+{% block content %}
+
+<div class="distro-block distro-metadata">
+  <h4 class="metadata">Metadata</h4>
+  <dl>
+    <dt>Distro Index Owner:</dt>
+    <dd>{{ distro.owner }}</dd>
+    <dt>Author:</dt>
+    {% if distro.author_email %}
+    <dd><a href="email:{{ distro.author_email }}">{{ distro.author or distro.author_email }}</a></dd>
+    {% else %}
+    <dd>{{ distro.author or 'N/A' }}</dd>
+    {% endif %}
+    <dt>Home Page:</dt>
+    {% if distro.home_page %}
+    <dd><a href="{{ distro.home_page }}">{{ distro.home_page }}</a></dd>
+    {% else %}
+    <dd>N/A</dd>
+    {% endif %}
+    <dt>Download:</dt>
+    {% if distro.download_url != 'UNKNOWN' and distro.download_url %}
+    <dd><a href="{{ distro.download_url }}">{{ distro.download_url }}</a></dd>
+    {% else %}
+    <dd>N/A</dd>
+    {% endif %}
+    <dt>License</dt>
+    <dd>{{ distro.license }}</dd>
+    <dt>Platform</dt>
+    {% if distro.platform != 'UNKNOWN' %}
+    <dd>{{ distro.platform }}</dd>
+    {% else %}
+    <dd>N/A</dd>
+    {% endif %}
+    <dt>Classifiers:</dt>
+    {% for x in distro_extra['classifiers'] %}
+    <dd>{{ x }}</dd>
+    {% endfor %}
+  </dl>
+</div>
+
+<h1>{{ distro.name }}</h1>
+<div class="distro-block distro-files">
+  <h4>Files</h4>
+  <ul class="file-listing">
+    {% for file in files %}
+    <li><a href="{{ file.url }}">{{ file.filename }}</a></li>
+    {% else %}
+    <li class="empty">no files</li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="distro-block distro-indexes {{ extra_css_classes }}">
+  <h4>Indexes</h4>
+  <ul class="index-listing">
+    {% for index in indexes %}
+    <li><a href="{{ index.url }}">{{ index.indexname }}</a></li>
+    {% else %}
+    <li class="empty">no indexes</li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="distro-summary">{{ distro.summary }}</div>
+<div class="distro-description">{{ rst(distro.description) }}</div>
+{% endblock %}
