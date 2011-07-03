@@ -1,6 +1,3 @@
-from ez_setup import use_setuptools
-use_setuptools()
-
 from setuptools import setup
 
 base_version = '0.4'
